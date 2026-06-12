@@ -11,6 +11,28 @@ This project is beginner-friendly and good for explaining in school because it u
 - No database
 - Easy testing through Swagger UI
 
+## Live Project Links
+
+GitHub repository:
+
+```text
+https://github.com/siddhi2511/student-tasks-api
+```
+
+Live Render API:
+
+```text
+https://student-tasks-api-somj.onrender.com
+```
+
+Live Swagger UI:
+
+```text
+https://student-tasks-api-somj.onrender.com/docs
+```
+
+Use the Swagger UI link if you want to test the API without installing anything.
+
 ## What Is An API?
 
 An API is a way for one program to talk to another program.
@@ -89,6 +111,119 @@ The `status` can only be:
 | `PUT` | `/tasks/{task_id}` | Updates a task |
 | `PATCH` | `/tasks/{task_id}/complete` | Marks a task as completed |
 | `DELETE` | `/tasks/{task_id}` | Deletes a task |
+
+## How To Use The Live API From Scratch
+
+This is the easiest way because the API is already deployed online.
+
+### Step 1: Open The Live Swagger UI
+
+Open this link:
+
+```text
+https://student-tasks-api-somj.onrender.com/docs
+```
+
+Swagger UI is a web page that lets you test the API by clicking buttons.
+
+### Step 2: View All Tasks
+
+1. Find `GET /tasks`.
+2. Click it.
+3. Click `Try it out`.
+4. Click `Execute`.
+
+You should see the sample tasks in the response.
+
+### Step 3: Create A New Task
+
+1. Find `POST /tasks`.
+2. Click it.
+3. Click `Try it out`.
+4. Paste this example into the request body:
+
+```json
+{
+  "student_name": "Siddhi",
+  "title": "Complete API homework",
+  "subject": "Computer Science",
+  "due_date": "2026-06-30",
+  "status": "pending"
+}
+```
+
+5. Click `Execute`.
+
+The API will return the new task with an `id`.
+
+Example:
+
+```json
+{
+  "student_name": "Siddhi",
+  "title": "Complete API homework",
+  "subject": "Computer Science",
+  "due_date": "2026-06-30",
+  "status": "pending",
+  "id": 3
+}
+```
+
+Remember the `id` because you need it for update, complete, and delete.
+
+### Step 4: Update A Task
+
+1. Find `PUT /tasks/{task_id}`.
+2. Click `Try it out`.
+3. Enter the task ID, for example `3`.
+4. Paste this body:
+
+```json
+{
+  "title": "Complete and submit API homework",
+  "status": "pending"
+}
+```
+
+5. Click `Execute`.
+
+The task title should be updated.
+
+### Step 5: Mark A Task Completed
+
+1. Find `PATCH /tasks/{task_id}/complete`.
+2. Click `Try it out`.
+3. Enter the task ID, for example `3`.
+4. Click `Execute`.
+
+The task status should change to:
+
+```text
+completed
+```
+
+### Step 6: Delete A Task
+
+1. Find `DELETE /tasks/{task_id}`.
+2. Click `Try it out`.
+3. Enter the task ID, for example `3`.
+4. Click `Execute`.
+
+You should see:
+
+```text
+Task deleted successfully
+```
+
+### Step 7: Test A Wrong ID
+
+Try:
+
+```text
+GET /tasks/999
+```
+
+The API should return `404 Task not found`.
 
 ## How To Run This Project
 
